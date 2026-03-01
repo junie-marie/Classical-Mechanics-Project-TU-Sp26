@@ -51,7 +51,7 @@ def interpolate_position(x, y, t_cumulative, t_now):
 # =========================
 def scene(c_coords, s_coords, x_c, y_c, x_s, y_s, t_c, t_s, t_anim):
     plotter = pv.Plotter(off_screen=True)
-    plotter.open_movie("brachistochrone.mp4", framerate=60)
+    plotter.open_movie("results/brachistochrone.mp4", framerate=60)
 
     # Add curves
     curve_c = pv.Spline(c_coords, len(x_c))
@@ -124,12 +124,12 @@ if __name__ == '__main__':
             "Cycloid Advantage"
         ],
         "Value": [
-            T_c,
-            T_theory,
-            tc_diff,
-            percent_error,
-            T_s,
-            advantage
+            round(T_c, 5),
+            round(T_theory, 5),
+            round(tc_diff, 5),
+            round(percent_error, 5),
+            round(T_s, 5),
+            round(advantage, 5)
         ],
         "Units": [
             "s",
@@ -143,7 +143,7 @@ if __name__ == '__main__':
 
     df = pd.DataFrame(data)
     print(df.to_string(index=False))
-    df.to_csv("brachistochrone_results.csv", index=False)
+    df.to_csv("results/brachistochrone_results.csv", index=False)
 
     t_max = max(T_c, T_s)
     t_anim = np.linspace(0, t_max, 1000)

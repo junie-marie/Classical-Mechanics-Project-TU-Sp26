@@ -1,7 +1,7 @@
 Quantity,Value,Units
-Cycloid Travel Time (simulated),1.00403604977082,s
-Cycloid Travel Time (theoretical),1.0030333403553238,s
-Difference (Simulated - Theoretical),0.0010027094154962946,s
-Percent Error,0.09996770547438488,%
-Straight Path Travel Time,1.1760861146282489,s
-Cycloid Advantage,0.1720500648574288,s
+Cycloid Travel Time (simulated),1.00404,s
+Cycloid Travel Time (theoretical),1.00303,s
+Difference (Simulated - Theoretical),0.001,s
+Percent Error,0.09997,%
+Straight Path Travel Time,1.17609,s
+Cycloid Advantage,0.17205,s
