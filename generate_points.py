@@ -70,16 +70,20 @@ class KatieCurve(CurveGenerator):
 
 class MarcCurve(CurveGenerator):
     """
-    Author: __________________
-    Curve Type: ______________
+    Author: Marc Escuderos Gomez
+    Curve Type: Power Curve
     """
+    def __init__(self, x_f: float, y_f: float, num_points: int = NUM_POINTS):
+        self.x_f = x_f
+        self.y_f = y_f
+        self.num_points = num_points
+
     def generate_points(self) -> pd.DataFrame:
-        # TODO: teammate implements their own formula
-        # Placeholder: all zeros (replace with real formula)
-        x = np.zeros_like(x) # replace me
-        y = np.zeros_like(x) # replace me
+        x = np.linspace(0, self.x_f, self.num_points)
+        u = x / self.x_f
+        y = self.y_f * (1 - u**3)
         return pd.DataFrame({'X': x, 'Y': y})
-    
+        
 # ===============================================================================
     
 class JuniperMarieCurve(CurveGenerator):
@@ -151,7 +155,7 @@ if __name__ == "__main__":
     teammates = [
         # ("results/chase_curveType_points.xlsx", ChaseCurve(X_F, Y_F)),
         # ("results/katie_curveType_points.xlsx", KatieCurve(X_F, Y_F)),
-        # ("results/marc_curveType_points.xlsx", MarcCurve(X_F, Y_F)),
+        ("results/marc_powercurve_points.xlsx", MarcCurve(X_F, Y_F)),
         # ("results/junipermarie_brachistochrone_points.xlsx", JuniperMarieCurve(X_F, Y_F))
     ]
 
