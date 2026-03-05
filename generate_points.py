@@ -7,8 +7,8 @@ from typing import Final
 # ===================================
 # Shared Constants (DO NOT CHANGE)
 # ===================================
-X_F: Final = 7.5   # inches, endpoint X
-Y_F: Final = 4.7   # inches, endpoint Y
+X_F: Final = 19.05   # centimeters, endpoint X
+Y_F: Final = 11.938   # centimeters, endpoint Y
 NUM_POINTS: Final = 50
 
 # ============================
@@ -81,7 +81,7 @@ class MarcCurve(CurveGenerator):
     def generate_points(self) -> pd.DataFrame:
         x = np.linspace(0, self.x_f, self.num_points)
         u = x / self.x_f
-        y = self.y_f * (1 - u**3)
+        y = self.y_f * (1 - u)**3
         return pd.DataFrame({'X': x, 'Y': y})
         
 # ===============================================================================
