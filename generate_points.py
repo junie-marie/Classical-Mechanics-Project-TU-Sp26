@@ -7,7 +7,7 @@ from typing import Final
 # ===================================
 # Shared Constants (DO NOT CHANGE)
 # ===================================
-X_F: Final = 19.05   # centimeters, endpoint X
+X_F: Final = 18.455   # centimeters, endpoint X
 Y_F: Final = 11.938   # centimeters, endpoint Y
 NUM_POINTS: Final = 50
 
@@ -155,7 +155,7 @@ if __name__ == "__main__":
     teammates = [
         # ("results/chase_curveType_points.xlsx", ChaseCurve(X_F, Y_F)),
         # ("results/katie_curveType_points.xlsx", KatieCurve(X_F, Y_F)),
-        ("results/marc_powercurve_points.xlsx", MarcCurve(X_F, Y_F)),
+        # ("results/marc_powercurve_points.xlsx", MarcCurve(X_F, Y_F)),
         # ("results/junipermarie_brachistochrone_points.xlsx", JuniperMarieCurve(X_F, Y_F))
     ]
 
