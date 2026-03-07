@@ -7,8 +7,8 @@ from typing import Final
 # ===================================
 # Shared Constants (DO NOT CHANGE)
 # ===================================
-X_F: Final = 18.455   # centimeters, endpoint X
-Y_F: Final = 11.938   # centimeters, endpoint Y
+X_F: Final = 185.708   # centimeters, endpoint X
+Y_F: Final = 10   # centimeters, endpoint Y
 NUM_POINTS: Final = 50
 
 # ============================
@@ -42,14 +42,24 @@ class CurveGenerator(ABC):
 
 class ChaseCurve(CurveGenerator):
     """
-    Author: __________________
-    Curve Type: ______________
+    Author: Chase Call
+    Curve Type: Wavy
     """
+    def __init__(self, x_f: float, y_f: float, num_points: int = 50):
+        self.x_f = x_f
+        self.y_f = y_f
+        self.num_points = num_points
+
     def generate_points(self) -> pd.DataFrame:
-        # TODO: implement a curve variant
-        # Placeholder: all zeros (replace with real formula)
-        x = np.zeros_like(x) # replace me
-        y = np.zeros_like(x) # replace me
+        t_guess = 4.0
+        t_f, R = JuniperMarieCurve.solve_cycloid_params(self.x_f, self.y_f, t_guess)
+        t = np.linspace(0, t_f, self.num_points)
+
+        x = R * (t - np.sin(t))
+        y = self.y_f - R * (1 - np.cos(t))
+
+        y = y + 0.75 * np.sin(2 * t)
+
         return pd.DataFrame({'X': x, 'Y': y})
     
 # ===============================================================================
@@ -153,10 +163,10 @@ if __name__ == "__main__":
         01 March 2026
     """
     teammates = [
-        # ("results/chase_curveType_points.xlsx", ChaseCurve(X_F, Y_F)),
+        ("results/chase_curveType_points.xlsx", ChaseCurve(X_F, Y_F)),
         # ("results/katie_curveType_points.xlsx", KatieCurve(X_F, Y_F)),
-        # ("results/marc_powercurve_points.xlsx", MarcCurve(X_F, Y_F)),
-        # ("results/junipermarie_brachistochrone_points.xlsx", JuniperMarieCurve(X_F, Y_F))
+        ("results/marc_powercurve_points.xlsx", MarcCurve(X_F, Y_F)),
+        ("results/junipermarie_brachistochrone_points.xlsx", JuniperMarieCurve(X_F, Y_F))
     ]
 
     for filename, generator in teammates:
