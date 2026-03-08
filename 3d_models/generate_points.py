@@ -7,7 +7,7 @@ from typing import Final
 # ===================================
 # Shared Constants (DO NOT CHANGE)
 # ===================================
-X_F: Final = 185.708   # centimeters, endpoint X
+X_F: Final = 15.708   # centimeters, endpoint X
 Y_F: Final = 10   # centimeters, endpoint Y
 NUM_POINTS: Final = 50
 
@@ -163,10 +163,10 @@ if __name__ == "__main__":
         01 March 2026
     """
     teammates = [
-        ("results/chase_curveType_points.xlsx", ChaseCurve(X_F, Y_F)),
-        # ("results/katie_curveType_points.xlsx", KatieCurve(X_F, Y_F)),
-        ("results/marc_powercurve_points.xlsx", MarcCurve(X_F, Y_F)),
-        ("results/junipermarie_brachistochrone_points.xlsx", JuniperMarieCurve(X_F, Y_F))
+        ("point_results/chase_curveType_points.xlsx", ChaseCurve(X_F, Y_F)),
+        # ("point_results/katie_curveType_points.xlsx", KatieCurve(X_F, Y_F)),
+        ("point_results/marc_powercurve_points.xlsx", MarcCurve(X_F, Y_F)),
+        ("point_results/junipermarie_brachistochrone_points.xlsx", JuniperMarieCurve(X_F, Y_F))
     ]
 
     for filename, generator in teammates:

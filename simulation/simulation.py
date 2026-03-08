@@ -1,5 +1,5 @@
 """
-brachistochrone_simulation.py
+simulation.py
 
 Simulates and visualizes the brachistochrone problem: a bead sliding under
 gravity along different paths between two points.
@@ -28,7 +28,7 @@ Juniper-Marie Rahal
 
 Last Edited
 -----------
-07 March 2026
+08 March 2026
 """
 
 from typing import Tuple
@@ -211,7 +211,7 @@ def animate_paths(
     t_c: np.ndarray,
     t_s: np.ndarray,
     t_anim: np.ndarray,
-    output_file: str = "results/brachistochrone_simulation.mp4"
+    output_file: str = "brachistochrone_simulation.mp4"
 ):
     """
     Animate bead motion along two curves using PyVista.
@@ -326,7 +326,7 @@ def main():
     results = generate_results(radius, T_c, T_s)
 
     print(results.to_string(index=False))
-    results.to_csv("results/brachistochrone_results.csv", index=False)
+    results.to_csv("simulation_data.csv", index=False)
 
     t_max = max(T_c, T_s)
     t_anim = np.linspace(0, t_max, 1000)
