@@ -28,14 +28,14 @@ Juniper-Marie Rahal
 
 Last Edited
 -----------
-08 March 2026
+09 March 2026
 """
 
 from typing import Tuple
 import numpy as np
 import pandas as pd
 import pyvista as pv
-
+import time
 
 # ================================================================
 # Constants
@@ -266,7 +266,7 @@ def animate_paths(
 
 def generate_results(radius: float,
                      T_c: float,
-                     T_s: float) -> pd.DataFrame:
+                     T_s: float, runtime: float) -> pd.DataFrame:
     """
     Generate results table comparing travel times.
     """
@@ -280,17 +280,19 @@ def generate_results(radius: float,
             "Difference (Simulated - Theoretical)",
             "Percent Error",
             "Straight Path Travel Time",
-            "Cycloid Advantage"
+            "Cycloid Advantage",
+            "Runtime"
         ],
         "Value": [
-            T_c,
-            T_theory,
-            T_c - T_theory,
-            abs((T_c - T_theory) / T_theory) * 100,
-            T_s,
-            T_s - T_c
+            round(T_c, 5),
+            round(T_theory, 5),
+            round(T_c - T_theory, 5),
+            round(abs((T_c - T_theory) / T_theory) * 100, 5),
+            round(T_s, 5),
+            round(T_s - T_c, 5),
+            round(runtime, 5)
         ],
-        "Units": ["s", "s", "s", "%", "s", "s"]
+        "Units": ["s", "s", "s", "%", "s", "s", "s"]
     }
 
     return pd.DataFrame(data)
@@ -304,7 +306,7 @@ def main():
     """
     Run the brachistochrone simulation.
     """
-
+    start = time.time()
     radius = 1
     theta = np.linspace(0, np.pi, 2000)
 
@@ -323,11 +325,6 @@ def main():
     T_c = t_c[-1]
     T_s = t_s[-1]
 
-    results = generate_results(radius, T_c, T_s)
-
-    print(results.to_string(index=False))
-    results.to_csv("simulation_data.csv", index=False)
-
     t_max = max(T_c, T_s)
     t_anim = np.linspace(0, t_max, 1000)
 
@@ -339,7 +336,13 @@ def main():
         t_c, t_s,
         t_anim
     )
+    end = time.time()
+    runtime = end - start
 
+    results = generate_results(radius, T_c, T_s, runtime)
+
+    print(results.to_string(index=False))
+    results.to_csv("simulation_data.csv", index=False)
 
 if __name__ == "__main__":
     main()
