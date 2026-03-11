@@ -66,14 +66,17 @@ class ChaseCurve(CurveGenerator):
 
 class KatieCurve(CurveGenerator):
     """
-    Author: __________________
-    Curve Type: ______________
+    Author: Katie Mitchell
+    Curve Type: Exponential
     """
+    def __init__(self, x_f: float, y_f: float, num_points: int = 50):
+        self.x_f = x_f
+        self.y_f = y_f
+        self.num_points = num_points
+        
     def generate_points(self) -> pd.DataFrame:
-        # TODO: teammate implements their own formula
-        # Placeholder: all zeros (replace with real formula)
-        x = np.zeros_like(x) # replace me
-        y = np.zeros_like(x) # replace me
+        x = np.linspace(0, self.x_f, self.num_points)
+        y =  10*np.exp(-x/2)
         return pd.DataFrame({'X': x, 'Y': y})
     
 # ===============================================================================
@@ -160,11 +163,11 @@ if __name__ == "__main__":
 
     If you need help cloning, pushing, or pulling from GitHub, please let me know!
     --  Juniper-Marie
-        01 March 2026
+        10 March 2026
     """
     teammates = [
         ("point_results/chase_curveType_points.xlsx", ChaseCurve(X_F, Y_F)),
-        # ("point_results/katie_curveType_points.xlsx", KatieCurve(X_F, Y_F)),
+        ("point_results/katie_curveType_points.xlsx", KatieCurve(X_F, Y_F)),
         ("point_results/marc_powercurve_points.xlsx", MarcCurve(X_F, Y_F)),
         ("point_results/junipermarie_brachistochrone_points.xlsx", JuniperMarieCurve(X_F, Y_F))
     ]
