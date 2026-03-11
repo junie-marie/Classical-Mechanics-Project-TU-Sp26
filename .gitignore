@@ -1,2 +1,12 @@
 3d_models/Model and Outputs/Stress Analysis Animation.avi
 *.rtf
+
+# Inventor backup folders
+*OldVersions/
+
+# Inventor lock files (created when a file is open)
+*.intlck
+*.lck
+
+# Thumbnail and temporary files
+*._*
