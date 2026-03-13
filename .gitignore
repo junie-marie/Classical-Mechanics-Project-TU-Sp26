@@ -1,5 +1,6 @@
 3d_models/Model and Outputs/Stress Analysis Animation.avi
-*.rtf
+*3D Brachistochrone Model (midterm)/
+*Assembly (midterm)/
 
 # Inventor backup folders
 *OldVersions/
@@ -10,3 +11,9 @@
 
 # Thumbnail and temporary files
 *._*
+
+# Inventor .rtfs
+*.rtf
+
+# Inventor logs
+*.log
