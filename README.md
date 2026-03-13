@@ -9,18 +9,17 @@ Given two points A and B in a vertical plane, find the shortest path for a bead 
 _Fun Fact: this problem was first proposed by Bernoulli in 1696!_
 
 ## Approach
-The project's description gives two options for approaching this problem:
+Our approach to this problem:
 
-**1. Experimental (3D Printing):**
+**1. Experimental (3D Printing): "3d_models/"**
 
-   Design and fabricate two tracks using 3D printing: one following the optimal trajectory and
-one with a varied path.
+   Design and fabricate five tracks using 3D printing: one following the optimal trajectory and four varied paths.
 
    Use identical objects to slide down both tracks and measure the time taken.
    
-**2. Computational Simulation:**
+**2. Computational Simulation: "simulation/"**
 
-   Numerically model both trajectories.
+   Numerically model the Brachistochrone curve and a comparison trajectory.
 
    Simulate the motion of an object using Newtonian mechanics to compare falling times.
 
@@ -36,6 +35,3 @@ The following constraints must be considered
 1. Total computational time must be reasonable (<10mins).
 2. The least accuracy of the model (numerical vs theoretical <1%).
 3. The size of the output files (<1GB).
-
-## Our Approach
-_TBD_
